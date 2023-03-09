@@ -2,6 +2,16 @@ import { View, Text, StyleSheet } from "react-native";
 import Title from "../components/Title";
 import COLORS from "../constants/colors";
 const GameScreen = ({}) => {
+  const generateRandomBetween = (min, max, exclude) => {
+    const rndNum = Math.floor(Math.random() * (max - min)) + min;
+
+    if (rndNum === exclude) {
+      return generateRandomBetween(min, max, exclude);
+    } else {
+      return rndNum;
+    }
+  };
+
   return (
     <View style={style.screen}>
       <Title color={COLORS.accent500}>Opponent's Guess</Title>
