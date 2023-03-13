@@ -21,5 +21,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text: { fontWeight: "bold", fontSize: 36, color: COLORS.accent500 },
+  text: { fontFamily: "open-sans-bold", fontSize: 36, color: COLORS.accent500 },
 });

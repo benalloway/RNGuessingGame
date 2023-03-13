@@ -3,8 +3,8 @@ import { StyleSheet, Text } from "react-native";
 const Title = ({ children, color }) => {
   const styles = StyleSheet.create({
     title: {
+      fontFamily: "open-sans-bold",
       fontSize: 24,
-      fontWeight: "bold",
       color: color,
       textAlign: "center",
       borderWidth: 2,

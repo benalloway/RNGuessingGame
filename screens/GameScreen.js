@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import Card from "../components/Card";
 import NumberContainer from "../components/game/NumberContainer";
+import InstructionText from "../components/InstructionText";
 import PrimaryButton from "../components/PrimaryButton";
 import Title from "../components/Title";
 import COLORS from "../constants/colors";
@@ -58,17 +61,23 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     <View style={style.screen}>
       <Title color={"white"}>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or lower?</Text>
-        <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
+      <Card>
+        <InstructionText style={style.instructionText}>
+          Higher or lower?
+        </InstructionText>
+        <View style={style.buttonsContainer}>
+          <View style={style.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="md-add" size={24} color={"white"} />
+            </PrimaryButton>
+          </View>
+          <View style={style.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="md-remove" size={24} color={"white"} />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
       <View>{/* LOG ROUNDS */}</View>
     </View>
   );
@@ -78,6 +87,16 @@ const style = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  buttonContainer: {
+    flex: 1,
+  },
+  instructionText: {
+    marginBottom: 12,
   },
 });
 
